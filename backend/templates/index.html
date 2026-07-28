@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Management API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .status {
+            display: inline-block;
+            background: #27ae60;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .links {
+            margin-top: 30px;
+        }
+        .link-item {
+            margin-bottom: 15px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gym Management System</h1>
+        <div class="status">System Online</div>
+        <p>Welcome to the Gym Management Backend. The system is running correctly and ready to process requests.</p>
+        
+        <div class="links">
+            <div class="link-item">
+                <strong>Admin Interface:</strong> 
+                <a href="/admin/">/admin/</a> - Manage users, payments, and system data.
+            </div>
+            <div class="link-item">
+                <strong>API Root:</strong> 
+                <a href="/api/users/">/api/users/</a> - User management endpoints.
+            </div>
+            <div class="link-item">
+                <strong>Dashboard Stats:</strong> 
+                <a href="/api/dashboard/stats/">/api/dashboard/stats/</a> - Real-time statistics.
+            </div>
+        </div>
+
+        <hr>
+        <h3>Getting Started</h3>
+        <p>Use the following credentials to log in to the admin panel:</p>
+        <ul>
+            <li><strong>Username:</strong> <code>admin</code></li>
+            <li><strong>Password:</strong> <code>admin@123</code></li>
+        </ul>
+    </div>
+</body>
+</html>

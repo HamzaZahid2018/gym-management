@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Payments — GymPro</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="loading-screen" id="ls"><div class="spinner"></div><div class="loading-txt">Loading payments…</div></div>
+<div class="app-layout" id="app" style="display:none">
+  <div id="sb"></div>
+  <div class="main-content">
+    <div id="tb"></div>
+    <div class="page-wrap">
+      <div class="page-hd">
+        <div><div class="page-title">Payments</div><div class="page-sub" id="pcount">Loading…</div></div>
+        <button class="btn btn-primary" onclick="openAdd()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Record Payment
+        </button>
+      </div>
+      <div id="alert-box"></div>
+      <div class="stats-grid" style="margin-bottom:22px">
+        <div class="stat-card green"><div class="stat-ico green"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><div class="stat-val" id="ps-paid">—</div><div class="stat-lbl">Paid</div><div class="stat-extra up" id="ps-rate"></div></div></div>
+        <div class="stat-card red"><div class="stat-ico red"><svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div><div><div class="stat-val" id="ps-unpaid">—</div><div class="stat-lbl">Unpaid</div><div class="stat-extra down" id="ps-pending-amt"></div></div></div>
+        <div class="stat-card orange"><div class="stat-ico orange"><svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="stat-val" id="ps-late">—</div><div class="stat-lbl">Late</div><div class="stat-extra" style="color:var(--orange)">Rs 2,000 each</div></div></div>
+        <div class="stat-card purple"><div class="stat-ico purple"><svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="stat-val" id="ps-rev">—</div><div class="stat-lbl">Total Collected</div><div class="stat-extra up">This month</div></div></div>
+      </div>
+      <div class="filters">
+        <div class="search-wrap" style="flex:1;min-width:200px">
+          <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="form-control" id="q" placeholder="Search by customer name or email…" oninput="filter()"/>
+        </div>
+        <select class="form-control" id="sf" onchange="filter()" style="width:150px">
+          <option value="">All Status</option><option value="paid">Paid</option><option value="unpaid">Unpaid</option><option value="late">Late</option><option value="pending">Pending</option>
+        </select>
+        <select class="form-control" id="mf" onchange="filter()" style="width:145px">
+          <option value="">All Months</option>
+          <option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option>
+          <option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option>
+        </select>
+      </div>
+      <div class="card" style="padding:0">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Customer</th><th>Period</th><th>Amount</th><th>Method</th><th>Status</th><th>Due Date</th><th>Action</th></tr></thead>
+            <tbody id="tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:var(--t3)">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div id="pager" class="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Record Payment Modal -->
+<div class="modal-ov" id="pmodal">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title">Record Payment</div><button class="modal-x" onclick="closeModal('pmodal')">&#215;</button></div>
+    <div class="modal-body">
+      <div id="malert"></div>
+      <div class="form-group"><label class="form-label">Customer *</label><select class="form-control" id="f-cust"><option value="">Select a customer…</option></select></div>
+      <div class="form-grid">
+        <div class="form-group"><label class="form-label">Month *</label>
+          <select class="form-control" id="f-mo"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Year *</label><input type="number" class="form-control" id="f-yr" min="2020" max="2035"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Amount (PKR) *</label>
+        <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+          <button type="button" class="fee-preset active" data-amt="2000" onclick="setPreset(this,2000)">Monthly — Rs 2,000</button>
+          <button type="button" class="fee-preset" data-amt="5500" onclick="setPreset(this,5500)">Quarterly — Rs 5,500</button>
+          <button type="button" class="fee-preset" data-amt="20000" onclick="setPreset(this,20000)">Yearly — Rs 20,000</button>
+        </div>
+        <input type="number" class="form-control" id="f-amt" placeholder="2000" step="1" min="0" value="2000"/>
+      </div>
+      <div class="form-group"><label class="form-label">Payment Method</label>
+        <select class="form-control" id="f-meth"><option value="cash">Cash</option><option value="card">Card</option><option value="online">Online</option><option value="cheque">Cheque</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="f-notes" rows="2" placeholder="Optional notes…"></textarea></div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn btn-secondary" onclick="closeModal('pmodal')">Cancel</button>
+      <button class="btn btn-primary" id="psub" onclick="submitPayment()">Record Payment</button>
+    </div>
+  </div>
+</div>
+<!-- Mark Paid Modal -->
+<div class="modal-ov" id="mpmodal">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title">Confirm Payment Received</div><button class="modal-x" onclick="closeModal('mpmodal')">&#215;</button></div>
+    <div class="modal-body">
+      <div id="mpalert"></div>
+      <div style="background:var(--greenbg);border:1.5px solid var(--greenbdr);border-radius:var(--rs);padding:14px 16px;font-size:13px;color:var(--green);font-weight:500;display:flex;align-items:center;gap:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Confirm that this payment has been received in full.
+      </div>
+      <div class="form-group"><label class="form-label">Payment Method</label>
+        <select class="form-control" id="mp-meth"><option value="cash">Cash</option><option value="card">Card</option><option value="online">Online</option><option value="cheque">Cheque</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="mp-notes" rows="2" placeholder="Optional notes…"></textarea></div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn btn-secondary" onclick="closeModal('mpmodal')">Cancel</button>
+      <button class="btn btn-success" id="mpbtn" onclick="confirmPaid()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Confirm Paid
+      </button>
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/payments.js"></script>
+</body>
+</html>

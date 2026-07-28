@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Create Account — GymPro</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="login-page">
+  <!-- Left panel -->
+  <div class="login-left">
+    <div class="login-brand">
+      <div class="login-brand-icon">💪</div>
+      <h1>GymPro</h1>
+      <p>Join thousands of gym owners managing their business efficiently with our platform.</p>
+    </div>
+    <div class="login-features">
+      <div class="login-feat"><div class="login-feat-ico">⚡</div>Quick & easy setup</div>
+      <div class="login-feat"><div class="login-feat-ico">🔒</div>Secure & encrypted</div>
+      <div class="login-feat"><div class="login-feat-ico">📊</div>Instant access to dashboard</div>
+      <div class="login-feat"><div class="login-feat-ico">💯</div>Free to get started</div>
+    </div>
+  </div>
+  <!-- Right panel -->
+  <div class="login-right">
+    <div class="login-form-wrap">
+      <div class="login-form-title">Create Your Account</div>
+      <div class="login-form-sub">Fill in your details to get started with GymPro</div>
+      <div id="alert-box"></div>
+      <form class="login-form" onsubmit="doRegister(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" id="fname" class="form-control" placeholder="John" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" id="lname" class="form-control" placeholder="Doe" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="em" class="form-control" placeholder="you@example.com" required autocomplete="email"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="+1234567890" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="pw" class="form-control" placeholder="Create a strong password" required autocomplete="new-password" minlength="8"/>
+            <button type="button" class="pw-toggle" onclick="togglePw('pw')">
+              <svg id="eye-on-pw" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg id="eye-off-pw" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+          <div style="font-size:11px;color:var(--t3);margin-top:4px">Minimum 8 characters</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="cpw" class="form-control" placeholder="Re-enter your password" required autocomplete="new-password" minlength="8"/>
+            <button type="button" class="pw-toggle" onclick="togglePw('cpw')">
+              <svg id="eye-on-cpw" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg id="eye-off-cpw" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="login-submit" id="reg-btn">
+          Create Account
+        </button>
+      </form>
+      
+      <div style="text-align:center;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
+        <p style="font-size:14px;color:var(--t2);margin-bottom:12px">Already have an account?</p>
+        <a href="login.html" style="display:inline-flex;align-items:center;gap:8px;color:var(--p);font-weight:600;font-size:14px;text-decoration:none;transition:all 0.2s">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Sign In
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script>
+if(localStorage.getItem('access_token')) window.location.href='dashboard.html';
+
+function togglePw(id){
+  const i=document.getElementById(id);
+  const on=document.getElementById('eye-on-'+id);
+  const off=document.getElementById('eye-off-'+id);
+  if(i.type==='password'){i.type='text';on.style.display='none';off.style.display=''}
+  else{i.type='password';on.style.display='';off.style.display='none'}
+}
+
+async function doRegister(e){
+  e.preventDefault();
+  const btn=document.getElementById('reg-btn');
+  const ab=document.getElementById('alert-box');
+  
+  // Get form values
+  const fname=document.getElementById('fname').value.trim();
+  const lname=document.getElementById('lname').value.trim();
+  const email=document.getElementById('em').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const password=document.getElementById('pw').value;
+  const confirmPassword=document.getElementById('cpw').value;
+  
+  // Validation
+  if(password !== confirmPassword){
+    showAlert(ab,'error','Passwords do not match!');
+    return;
+  }
+  
+  if(password.length < 8){
+    showAlert(ab,'error','Password must be at least 8 characters long!');
+    return;
+  }
+  
+  btn.disabled=true;
+  btn.textContent='Creating account…';
+  
+  try{
+    // Create username from email
+    const username = email.split('@')[0] + '_' + Date.now();
+    
+    // Register user using the correct endpoint
+    const data = {
+      username: username,
+      email: email,
+      password: password,
+      password2: confirmPassword,
+      first_name: fname,
+      last_name: lname,
+      phone_number: phone
+    };
+    
+    await api.post('/users/register/', data, false);
+    
+    // Show success message
+    showAlert(ab,'success','Account created successfully! Redirecting to login...');
+    
+    // Redirect to login after 2 seconds
+    setTimeout(() => {
+      window.location.href='login.html?registered=true';
+    }, 2000);
+    
+  }catch(err){
+    console.error('Registration error:', err);
+    let msg='Failed to create account. ';
+    
+    if(err?.data?.email){
+      msg += Array.isArray(err.data.email) ? err.data.email[0] : err.data.email;
+    }else if(err?.data?.username){
+      msg += Array.isArray(err.data.username) ? err.data.username[0] : err.data.username;
+    }else if(err?.data?.password){
+      msg += Array.isArray(err.data.password) ? err.data.password[0] : err.data.password;
+    }else if(err?.data?.detail){
+      msg += err.data.detail;
+    }else{
+      msg += 'Please try again.';
+    }
+    
+    showAlert(ab,'error',msg);
+    btn.disabled=false;
+    btn.textContent='Create Account';
+  }
+}
+</script>
+</body>
+</html>
