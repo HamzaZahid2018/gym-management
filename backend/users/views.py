@@ -22,7 +22,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
-        if self.action == 'create' or self.action == 'register':
+        if self.action == 'register':
             return UserRegisterSerializer
         elif self.action == 'login':
             return UserLoginSerializer
@@ -34,6 +34,13 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action in ['create', 'register', 'login']:
             return [AllowAny()]
         return super().get_permissions()
+
+    def get_queryset(self):
+        """Exclude staff/superusers from customer list — only show gym members."""
+        qs = User.objects.all()
+        if self.action in ['list', 'retrieve']:
+            qs = qs.filter(is_staff=False, is_superuser=False)
+        return qs
 
     @action(detail=False, methods=['post'], permission_classes=[AllowAny()])
     def register(self, request):

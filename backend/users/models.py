@@ -19,6 +19,8 @@ class User(AbstractUser):
     """
     Extended User model with gym-specific fields.
     """
+    email = models.EmailField(unique=True)
+
     phone_number = models.CharField(
         max_length=20,
         validators=[RegexValidator(r'^\+?1?\d{9,15}$', 'Enter a valid phone number.')],

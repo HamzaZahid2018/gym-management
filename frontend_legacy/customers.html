@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Customers — GymPro</title>
-<link rel="stylesheet" href="css/style.css"/>
+<title>Members — Fitness Fusion</title>
+<link rel="stylesheet" href="css/style.css?v=3"/>
 </head>
 <body>
 <div class="loading-screen" id="ls"><div class="spinner"></div><div class="loading-txt">Loading customers…</div></div>
@@ -13,50 +13,50 @@
     <div id="tb"></div>
     <div class="page-wrap">
       <div class="page-hd">
-        <div><div class="page-title">Customers</div><div class="page-sub" id="ccount">Loading…</div></div>
+        <div><div class="page-title">Gym Members</div><div class="page-sub" id="ccount">Loading…</div></div>
         <button class="btn btn-primary" onclick="openAdd()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Add Customer
+          Add Member
         </button>
       </div>
       <div id="alert-box"></div>
 
       <!-- Fee info bar -->
-      <div style="display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap">
-        <div style="flex:1;min-width:180px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)">
-          <div style="width:42px;height:42px;border-radius:12px;background:var(--bluebg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <div class="fee-cards">
+        <div class="fee-card">
+          <div class="fee-card-icon" style="background:var(--bluebg)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div><div style="font-size:18px;font-weight:800;color:var(--t1)">Rs 2,000</div><div style="font-size:12px;color:var(--t3);margin-top:2px">Monthly Fee</div></div>
+          <div class="fee-card-content"><div class="fee-card-value">Rs 2,000</div><div class="fee-card-label">Monthly Fee</div></div>
         </div>
-        <div style="flex:1;min-width:180px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)">
-          <div style="width:42px;height:42px;border-radius:12px;background:var(--purplebg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <div class="fee-card">
+          <div class="fee-card-icon" style="background:var(--purplebg)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div><div style="font-size:18px;font-weight:800;color:var(--t1)">Rs 5,500</div><div style="font-size:12px;color:var(--t3);margin-top:2px">Quarterly Fee</div></div>
+          <div class="fee-card-content"><div class="fee-card-value">Rs 5,500</div><div class="fee-card-label">Quarterly Fee</div></div>
         </div>
-        <div style="flex:1;min-width:180px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)">
-          <div style="width:42px;height:42px;border-radius:12px;background:var(--yellowbg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <div class="fee-card">
+          <div class="fee-card-icon" style="background:var(--yellowbg)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div><div style="font-size:18px;font-weight:800;color:var(--t1)">Rs 20,000</div><div style="font-size:12px;color:var(--t3);margin-top:2px">Yearly Fee</div></div>
+          <div class="fee-card-content"><div class="fee-card-value">Rs 20,000</div><div class="fee-card-label">Yearly Fee</div></div>
         </div>
-        <div style="flex:1;min-width:180px;background:var(--bg2);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)">
-          <div style="width:42px;height:42px;border-radius:12px;background:var(--greenbg);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <div class="fee-card">
+          <div class="fee-card-icon" style="background:var(--greenbg)">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
           </div>
-          <div><div style="font-size:18px;font-weight:800;color:var(--t1)" id="c-active-rev">—</div><div style="font-size:12px;color:var(--t3);margin-top:2px">Expected Monthly Revenue</div></div>
+          <div class="fee-card-content"><div class="fee-card-value" id="c-active-rev">—</div><div class="fee-card-label">Expected Monthly Revenue</div></div>
         </div>
       </div>
       <div class="filters">
-        <div class="search-wrap" style="flex:1;min-width:200px">
+        <div class="search-wrap" style="flex:1;min-width:0">
           <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" class="form-control" id="q" placeholder="Search by name, email or username…" oninput="filter()"/>
         </div>
-        <select class="form-control" id="sf" onchange="filter()" style="width:150px">
+        <select class="form-control" id="sf" onchange="filter()">
           <option value="">All Status</option><option value="active">Active</option><option value="inactive">Inactive</option><option value="suspended">Suspended</option>
         </select>
-        <select class="form-control" id="mf" onchange="filter()" style="width:165px">
+        <select class="form-control" id="mf" onchange="filter()">
           <option value="">All Memberships</option><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="yearly">Yearly</option>
         </select>
       </div>
@@ -75,18 +75,14 @@
 <!-- Modal -->
 <div class="modal-ov" id="cmodal">
   <div class="modal">
-    <div class="modal-hd"><div class="modal-title" id="mtitle">Add Customer</div><button class="modal-x" onclick="closeModal('cmodal')">&#215;</button></div>
+    <div class="modal-hd"><div class="modal-title" id="mtitle">Add Member</div><button class="modal-x" onclick="closeModal('cmodal')">&#215;</button></div>
     <div class="modal-body">
       <div id="malert"></div>
       <div class="form-grid">
         <div class="form-group"><label class="form-label">First Name *</label><input type="text" class="form-control" id="f-fn" placeholder="John"/></div>
         <div class="form-group"><label class="form-label">Last Name *</label><input type="text" class="form-control" id="f-ln" placeholder="Doe"/></div>
       </div>
-      <div class="form-group"><label class="form-label">Email Address *</label><input type="email" class="form-control" id="f-em" placeholder="john@example.com"/></div>
-      <div class="form-group"><label class="form-label">Username *</label><input type="text" class="form-control" id="f-un" placeholder="john_doe"/></div>
-      <div class="form-group" id="pw-grp"><label class="form-label">Password *</label><input type="password" class="form-control" id="f-pw" placeholder="Minimum 8 characters"/></div>
-      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-control" id="f-ph" placeholder="+1 234 567 8900"/></div>
-      <div class="form-group"><label class="form-label">Address</label><textarea class="form-control" id="f-ad" rows="2" placeholder="123 Street, City, State"></textarea></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-control" id="f-ph" placeholder="+92 300 1234567"/></div>
       <div class="form-grid">
         <div class="form-group"><label class="form-label">Membership Type</label>
           <select class="form-control" id="f-mt"><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="yearly">Yearly</option></select>
@@ -98,7 +94,7 @@
     </div>
     <div class="modal-ft">
       <button class="btn btn-secondary" onclick="closeModal('cmodal')">Cancel</button>
-      <button class="btn btn-primary" id="msub" onclick="submit()">Add Customer</button>
+      <button class="btn btn-primary" id="msub" onclick="submit()">Add Member</button>
     </div>
   </div>
 </div>
@@ -109,7 +105,7 @@ if(!requireAuth()){}
 let all=[],editId=null,page=1;const PS=10;
 async function init(){
   document.getElementById('sb').innerHTML=renderSidebar('customers');
-  document.getElementById('tb').innerHTML=renderTopbar('Customers','Manage your gym members and memberships');
+  document.getElementById('tb').innerHTML=renderTopbar('Gym Members','Manage your fitness center members and memberships');
   await load();
   document.getElementById('ls').style.display='none';
   document.getElementById('app').style.display='flex';
@@ -119,7 +115,7 @@ async function load(){
     let p=1,res=[],more=true;
     while(more){const d=await userService.getAll(p);const it=d.results||d;res=res.concat(it);more=!!d.next;p++;if(p>20)break}
     all=res;filter();
-  }catch{showAlert(document.getElementById('alert-box'),'error','Failed to load customers.');document.getElementById('tbody').innerHTML=`<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--t3)">Failed to load</td></tr>`}
+  }catch{showAlert(document.getElementById('alert-box'),'error','Failed to load members.');document.getElementById('tbody').innerHTML=`<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--t3)">Failed to load</td></tr>`}
 }
 function filter(){
   const q=document.getElementById('q').value.toLowerCase();
@@ -136,19 +132,19 @@ function filter(){
 function renderTable(data){
   const tb=document.getElementById('tbody');
   const sl=data.slice((page-1)*PS,page*PS);
-  if(!sl.length){tb.innerHTML=`<tr><td colspan="6"><div class="empty"><div class="empty-ico">&#128100;</div><p>No customers found</p></div></td></tr>`;document.getElementById('pager').innerHTML='';return}
+  if(!sl.length){tb.innerHTML=`<tr><td colspan="6"><div class="empty"><div class="empty-ico">🏃‍♂️</div><p>No members found</p></div></td></tr>`;document.getElementById('pager').innerHTML='';return}
   tb.innerHTML=sl.map(c=>{
     const feeMap={monthly:'Rs 2,000',quarterly:'Rs 5,500',yearly:'Rs 20,000'};
     const fee=feeMap[c.membership_type]||'Rs 2,000';
     return`<tr>
-    <td><div style="display:flex;align-items:center;gap:10px"><div class="avatar">${getInitials(c.first_name,c.last_name)}</div><div><div style="font-weight:600">${c.first_name} ${c.last_name}</div><div style="font-size:11.5px;color:var(--t3)">${c.email}</div></div></div></td>
-    <td style="color:var(--t2)">${c.phone_number||'—'}</td>
-    <td><div>${badge(c.membership_type)}</div><div style="font-size:11px;color:var(--t3);margin-top:3px;font-weight:600">${fee}</div></td>
-    <td>${badge(c.status)}</td>
-    <td style="color:var(--t3)">${formatDate(c.join_date)}</td>
-    <td><div style="display:flex;gap:6px">
-      <button class="btn-icon" onclick="openEdit(${c.id})" title="Edit customer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-      <button class="btn-icon del" onclick="del(${c.id},'${c.first_name} ${c.last_name}')" title="Delete customer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
+    <td data-label="Member"><div style="display:flex;align-items:center;gap:10px"><div class="avatar">${getInitials(c.first_name,c.last_name)}</div><div><div style="font-weight:600">${c.first_name} ${c.last_name}</div><div style="font-size:11.5px;color:var(--t3)">${c.email}</div></div></div></td>
+    <td data-label="Phone" style="color:var(--t2)">${c.phone_number||'—'}</td>
+    <td data-label="Membership"><div>${badge(c.membership_type)}</div><div style="font-size:11px;color:var(--t3);margin-top:3px;font-weight:600">${fee}</div></td>
+    <td data-label="Status">${badge(c.status)}</td>
+    <td data-label="Joined" style="color:var(--t3)">${formatDate(c.join_date)}</td>
+    <td data-label="Actions"><div style="display:flex;gap:6px">
+      <button class="btn-icon" onclick="openEdit(${c.id})" title="Edit member"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+      <button class="btn-icon del" onclick="del(${c.id},'${c.first_name} ${c.last_name}')" title="Delete member"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
     </div></td>
   </tr>`;}).join('');
   renderPager(data.length);
@@ -161,29 +157,53 @@ function renderPager(total){
   document.getElementById('pager').innerHTML=h;
 }
 function goPage(p){page=p;filter()}
-function clearForm(){['fn','ln','em','un','pw','ph','ad'].forEach(f=>document.getElementById('f-'+f).value='');document.getElementById('f-mt').value='monthly';document.getElementById('f-st').value='active';document.getElementById('malert').innerHTML=''}
-function openAdd(){editId=null;clearForm();document.getElementById('mtitle').textContent='Add Customer';document.getElementById('msub').textContent='Add Customer';document.getElementById('pw-grp').style.display='flex';openModal('cmodal')}
+function clearForm(){['fn','ln','ph'].forEach(f=>document.getElementById('f-'+f).value='');document.getElementById('f-mt').value='monthly';document.getElementById('f-st').value='active';document.getElementById('malert').innerHTML=''}
+function openAdd(){editId=null;clearForm();document.getElementById('mtitle').textContent='Add Member';document.getElementById('msub').textContent='Add Member';openModal('cmodal')}
 function openEdit(id){
   const c=all.find(x=>x.id===id);if(!c)return;
   editId=id;clearForm();
-  document.getElementById('mtitle').textContent='Edit Customer';document.getElementById('msub').textContent='Save Changes';document.getElementById('pw-grp').style.display='none';
-  document.getElementById('f-fn').value=c.first_name||'';document.getElementById('f-ln').value=c.last_name||'';document.getElementById('f-em').value=c.email||'';document.getElementById('f-un').value=c.username||'';document.getElementById('f-ph').value=c.phone_number||'';document.getElementById('f-ad').value=c.address||'';document.getElementById('f-mt').value=c.membership_type||'monthly';document.getElementById('f-st').value=c.status||'active';
+  document.getElementById('mtitle').textContent='Edit Member';document.getElementById('msub').textContent='Save Changes';
+  document.getElementById('f-fn').value=c.first_name||'';document.getElementById('f-ln').value=c.last_name||'';document.getElementById('f-ph').value=c.phone_number||'';document.getElementById('f-mt').value=c.membership_type||'monthly';document.getElementById('f-st').value=c.status||'active';
   openModal('cmodal');
 }
 async function submit(){
   const btn=document.getElementById('msub');const ab=document.getElementById('malert');
-  const data={first_name:document.getElementById('f-fn').value.trim(),last_name:document.getElementById('f-ln').value.trim(),email:document.getElementById('f-em').value.trim(),username:document.getElementById('f-un').value.trim(),phone_number:document.getElementById('f-ph').value.trim(),address:document.getElementById('f-ad').value.trim(),membership_type:document.getElementById('f-mt').value,status:document.getElementById('f-st').value};
-  if(!data.first_name||!data.email||!data.username){showAlert(ab,'error','First name, email and username are required.');return}
-  if(!editId){const pw=document.getElementById('f-pw').value;if(!pw||pw.length<8){showAlert(ab,'error','Password must be at least 8 characters.');return}data.password=pw}
+  const first_name=document.getElementById('f-fn').value.trim();
+  const last_name=document.getElementById('f-ln').value.trim();
+  const phone_number=document.getElementById('f-ph').value.trim();
+  const membership_type=document.getElementById('f-mt').value;
+  const status=document.getElementById('f-st').value;
+
+  // Clear any previous alerts
+  ab.innerHTML = '';
+
+  if(!first_name||!last_name){showAlert(ab,'error','First name and last name are required.');return}
+
+  // Auto-generate email and username for backend requirement
+  const ts=Date.now();
+  const data={
+    first_name,last_name,phone_number,membership_type,status,
+    ...(editId ? {} : {
+      email:`${first_name.toLowerCase()}.${last_name.toLowerCase()}.${ts}@gym.local`,
+      username:`${first_name.toLowerCase()}${last_name.toLowerCase()}${ts}`,
+      password:'GymMember@123'
+    })
+  };
+
+  console.log('Submitting data:', data); // Debug log
+
   btn.disabled=true;btn.textContent='Saving…';
   try{
     if(editId)await userService.update(editId,data);else await userService.create(data);
-    showAlert(document.getElementById('alert-box'),'success',editId?'Customer updated successfully.':'Customer added successfully.');
+    showAlert(document.getElementById('alert-box'),'success',editId?'Member updated successfully.':'Member added successfully.');
     closeModal('cmodal');await load();
-  }catch(err){const msg=Object.values(err?.data||{}).flat().join(' ')||'Failed to save customer.';showAlert(ab,'error',msg)}
-  finally{btn.disabled=false;btn.textContent=editId?'Save Changes':'Add Customer'}
+  }catch(err){
+    console.error('API Error:', err); // Debug log
+    const msg=Object.values(err?.data||{}).flat().join(' ')||'Failed to save member.';showAlert(ab,'error',msg)
+  }
+  finally{btn.disabled=false;btn.textContent=editId?'Save Changes':'Add Member'}
 }
-function del(id,name){openConfirm('Delete Customer',`Are you sure you want to delete "${name}"? This action cannot be undone.`,async()=>{try{await userService.delete(id);showAlert(document.getElementById('alert-box'),'success','Customer deleted successfully.');await load()}catch{showAlert(document.getElementById('alert-box'),'error','Failed to delete customer.')}})}
+function del(id,name){openConfirm('Delete Member',`Are you sure you want to delete "${name}"? This action cannot be undone.`,async()=>{try{await userService.delete(id);showAlert(document.getElementById('alert-box'),'success','Member deleted successfully.');await load()}catch{showAlert(document.getElementById('alert-box'),'error','Failed to delete member.')}})}
 init();
 </script>
 </body>

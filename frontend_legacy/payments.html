@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Payments — GymPro</title>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/style.css?v=3"/>
 </head>
 <body>
 <div class="loading-screen" id="ls"><div class="spinner"></div><div class="loading-txt">Loading payments…</div></div>
@@ -27,14 +27,14 @@
         <div class="stat-card purple"><div class="stat-ico purple"><svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="stat-val" id="ps-rev">—</div><div class="stat-lbl">Total Collected</div><div class="stat-extra up">This month</div></div></div>
       </div>
       <div class="filters">
-        <div class="search-wrap" style="flex:1;min-width:200px">
+        <div class="search-wrap" style="flex:1;min-width:0">
           <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" class="form-control" id="q" placeholder="Search by customer name or email…" oninput="filter()"/>
         </div>
-        <select class="form-control" id="sf" onchange="filter()" style="width:150px">
+        <select class="form-control" id="sf" onchange="filter()">
           <option value="">All Status</option><option value="paid">Paid</option><option value="unpaid">Unpaid</option><option value="late">Late</option><option value="pending">Pending</option>
         </select>
-        <select class="form-control" id="mf" onchange="filter()" style="width:145px">
+        <select class="form-control" id="mf" onchange="filter()">
           <option value="">All Months</option>
           <option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option>
           <option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option>

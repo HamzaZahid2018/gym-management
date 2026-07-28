@@ -89,7 +89,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-_static_frontend = BASE_DIR.parent / 'static_frontend'
+_static_frontend = BASE_DIR.parent / 'frontend_legacy'
 STATICFILES_DIRS = [d for d in [BASE_DIR / 'static', _static_frontend] if d.exists()]
 
 MEDIA_URL = '/media/'

@@ -5,8 +5,12 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for User model."""
-    password = serializers.CharField(write_only=True, required=True)
-    
+    password = serializers.CharField(write_only=True, required=False)
+    username = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
+
     class Meta:
         model = User
         fields = [
@@ -16,7 +20,35 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'join_date']
 
+    def validate(self, data):
+        # Check if creating a new user (no instance)
+        if not self.instance:
+            # For new users, first_name and last_name are required
+            if not data.get('first_name') or not data.get('last_name'):
+                raise serializers.ValidationError({
+                    'detail': 'First name and last name are required.'
+                })
+        return data
+
     def create(self, validated_data):
+        import time
+        first = validated_data.get('first_name', '').lower().strip()
+        last = validated_data.get('last_name', '').lower().strip()
+        ts = str(int(time.time()))
+
+        # Auto-generate username if not provided
+        if not validated_data.get('username'):
+            base = f"{first}{last}{ts}"
+            validated_data['username'] = base[:150]
+
+        # Auto-generate email if not provided
+        if not validated_data.get('email'):
+            validated_data['email'] = f"{first}.{last}.{ts}@gym.local"
+
+        # Set default password if not provided
+        if not validated_data.get('password'):
+            validated_data['password'] = 'GymMember@123'
+
         user = User.objects.create_user(**validated_data)
         return user
 
@@ -66,10 +98,10 @@ class UserLoginSerializer(serializers.Serializer):
             user = authenticate(username=email, password=password)
 
         if not user:
-            raise serializers.ValidationError('Invalid email or password.')
+            raise serializers.ValidationError({'detail': 'Invalid email or password.'})
 
         if not user.is_active:
-            raise serializers.ValidationError('This account is disabled.')
+            raise serializers.ValidationError({'detail': 'This account is disabled.'})
 
         data['user'] = user
         return data

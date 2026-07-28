@@ -5,7 +5,6 @@ let allP=[],allC=[],markId=null,page=1;const PS=10;
 async function init(){
   document.getElementById('sb').innerHTML=renderSidebar('payments');
   document.getElementById('tb').innerHTML=renderTopbar('Payments','Track and manage all member payments');
-  const now=new Date();document.getElementById('f-mo').value=now.getMonth()+1;document.getElementById('f-yr').value=now.getFullYear();
   try{await Promise.all([loadPayments(),loadCustomers()])}
   catch{showAlert(document.getElementById('alert-box'),'error','Failed to load data. Is the backend running on port 8000?')}
   document.getElementById('ls').style.display='none';document.getElementById('app').style.display='flex';
@@ -94,8 +93,7 @@ function openAdd(){
   document.querySelectorAll('.fee-preset').forEach(b=>b.classList.remove('active'));
   document.querySelector('.fee-preset[data-amt="2000"]')?.classList.add('active');
   openModal('pmodal');
-}
-async function submitPayment(){
+}async function submitPayment(){
   const btn=document.getElementById('psub');const ab=document.getElementById('malert');
   const cust=document.getElementById('f-cust').value;const amt=document.getElementById('f-amt').value;const mo=document.getElementById('f-mo').value;const yr=document.getElementById('f-yr').value;
   if(!cust||!amt||!mo||!yr){showAlert(ab,'error','Customer, amount, month and year are required.');return}

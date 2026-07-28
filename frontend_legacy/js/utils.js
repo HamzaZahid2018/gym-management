@@ -31,14 +31,14 @@ function renderSidebar(active){
   const ini=getInitials(u.first_name,u.last_name);
   const nav=[
     {id:'dashboard',href:'dashboard.html',label:'Dashboard',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>`},
-    {id:'customers',href:'customers.html',label:'Customers',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`},
+    {id:'customers',href:'customers.html',label:'Members',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`},
     {id:'payments',href:'payments.html',label:'Payments',svg:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>`},
   ];
   return`<div class="sb-overlay" id="sb-overlay" onclick="toggleSidebar()"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sb-logo">
-      <div class="sb-logo-icon">&#128170;</div>
-      <div><div class="sb-logo-name">GymPro</div><div class="sb-logo-tag">Management System</div></div>
+      <div class="sb-logo-icon">💪</div>
+      <div><div class="sb-logo-name">Fitness Fusion</div><div class="sb-logo-tag">Gym Management</div></div>
     </div>
     <nav class="sb-nav">
       <div class="sb-section">Navigation</div>
@@ -47,7 +47,7 @@ function renderSidebar(active){
     <div class="sb-footer">
       <div class="sb-user">
         <div class="sb-avatar">${ini}</div>
-        <div style="min-width:0"><div class="sb-uname">${u.first_name||'Admin'} ${u.last_name||''}</div><div class="sb-uemail">${u.email||''}</div></div>
+        <div style="min-width:0"><div class="sb-uname">${u.first_name||'Owner'} ${u.last_name||''}</div><div class="sb-uemail">${u.email||'admin@fitnessfusion.com'}</div></div>
       </div>
       <button class="sb-logout" onclick="logout()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
