@@ -628,3 +628,9 @@ For issues, questions, or suggestions:
 Thank you for using the Gym Management System! Start managing your gym more efficiently today.
 
 **Happy coding! 💻**
+
+---
+
+## 📅 Daily Updates
+
+- 2026-10-02: README refreshed.
