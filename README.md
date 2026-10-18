@@ -620,7 +620,6 @@ For issues, questions, or suggestions:
 1. Check documentation in [backend/README.md](backend/README.md) and [frontend/README.md](frontend/README.md)
 2. Review project structure and code comments
 3. Check troubleshooting section above
-
 ---
 
 ## 🎉 Welcome!
@@ -641,3 +640,4 @@ Thank you for using the Gym Management System! Start managing your gym more effi
 - 2026-10-14: README refreshed.
 - 2026-10-15: README refreshed.
 - 2026-10-15: evening docs refresh.
+- 2026-10-18: README refreshed.
