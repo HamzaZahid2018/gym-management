@@ -651,3 +651,4 @@ Thank you for using the Gym Management System! Start managing your gym more effi
 - 2026-10-25: README refreshed.
 
 - 2026-10-27: README refreshed.
+- 2026-10-28: README refreshed.
